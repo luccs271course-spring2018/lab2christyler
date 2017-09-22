@@ -1,4 +1,4 @@
-package edu.luc.cs.cs271.lab2;
+  package edu.luc.cs.cs271.lab2;
 
 /** A sports team. */
 public class Team {
@@ -16,26 +16,37 @@ public class Team {
     if (name == null) {
       throw new IllegalArgumentException("name is null");
     }
-    // TODO validity checking for headcoach
-    // TODO validity checking for funding
+    // TODO validity checking for headcoach DONE
+    if (headcoach == null) {
+      throw new IllegalArgumentException("headcoach is null");
+    }
+    // TODO validity checking for funding DONE
+    if (funding < 0) {
+      throw new IllegalArgumentException("funding is null");
+    }
     this.name = name;
-    // TODO complete this constructor
+    // TODO complete this constructor DONE
+    this.headcoach = headcoach;
+    this.funding = funding;
   }
 
   /** Returns the team's name. */
   public String getName() {
+
     return this.name;
   }
 
   /** Returns the team's head coach. */
   public String getHeadcoach() {
-    // TODO complete this method
-    return null;
+    // TODO complete this method DONE
+    return this.headcoach;
+    //return null;
   }
 
   /** Returns the team's funding level. */
   public int getFunding() {
-    // TODO complete this method
-    return -1;
+    // TODO complete this method DONE
+    return this.funding;
+    //return -1;
   }
 }
