@@ -36,70 +36,55 @@ public class Search {
     }
     return Optional.empty();
   }
-  
-  /** 
-   * Looks for the position of the poorest team that has at least 
+
+  /**
+   * Looks for the position of the poorest team that has at least
    * the specified funding level.
    * @pre arr is sorted
    * @post arr[result].funding >= minFunding && for all 0 <= i < result : arr[i].funding < minFunding
    */
   public static Optional<Integer> findTeamMinFunding(final Team[] arr, final int minFunding) {
-    // TODO complete this method DONE
-    final int size = arr.length;
-    boolean found = false;
-    for (int i = 0; i <size; i++) {
-      if (arr[i].getFunding() == minFunding || arr[i].getFunding() > minFunding) {
-        return Optional.of(i);
+      // TODO complete this method
+      final int size = arr.length;
+      for (int i = 0; i < size; i++) {
+          if (arr[i].getFunding() >= minFunding) {
+              return Optional.of(i);
+          }
       }
-      else if (arr[i].getFunding() < minFunding) {
-        found = true;
-      }
-    }
-    if (found == false) {
-      System.out.println("There's no team with at least " + minFunding);
-    }
-    return Optional.empty();
+      return Optional.empty();
+
   }
-  
-  /** 
-   * Looks for the position of the poorest team that has at least 
-   * the specified funding level. 
-   * Uses binary search: Initially search the entire array, 
-   * then repeatedly eliminate the wrong half of the array until 
+
+  /**
+   * Looks for the position of the poorest team that has at least
+   * the specified funding level.
+   * Uses binary search: Initially search the entire array,
+   * then repeatedly eliminate the wrong half of the array until
    * zero or one items are left.
    * @pre arr is sorted
    * @post arr[result].funding >= minFunding && for all 0 <= i < result : arr[i].funding < minFunding
    */
   public static Optional<Integer> findTeamMinFundingFast(final Team[] arr, int minFunding) {
-    // TODO complete this method DONE
-    // Gets the array size
-    final int size = arr.length;
-    // Initially search the entire array
-    int low = 0;
-    int high = size - 1;
-
-    // Keep going as long as there is more than one item to be checked
-
-    while((high - low) >= 0){
-
-     final int mid = (high + low)/2;
-
-      if(arr[mid].getFunding() == minFunding){
-        return Optional.of(mid);
-      } else if(arr[mid].getFunding() > minFunding){
-         high = mid - 1;
-      } else {
-        low = mid + 1;
+      // TODO complete this method
+      // Gets the array size
+      final int size = arr.length;
+      // Initially search the entire array
+      int low = 0;
+      int high = size - 1;
+      // Keep going as long as there is more than one item to be checked
+      // Eliminate the wrong half of the array
+      // Return current item only if it meets the condition!
+      while (low <= high) {
+         final int mid = (low + high) / 2;
+          if (arr[low].getFunding() >= minFunding)
+              return Optional.of(low);
+          else if (arr[low].getFunding() < minFunding && arr[mid].getFunding() < minFunding)
+              low = mid + 1;
+          else
+              high = mid - 1;
       }
-
-    }
-
-    // Eliminate the wrong half of the array
-    // Return current item only if it meets the condition!
-    if (low <= high && arr[low].getFunding() >= minFunding) {
-      return Optional.of(low);
-    } else {
       return Optional.empty();
-    }
+
+
   }
 }

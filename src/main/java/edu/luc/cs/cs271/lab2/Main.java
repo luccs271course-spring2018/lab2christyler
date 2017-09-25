@@ -59,7 +59,7 @@ public class Main {
       final int pos = index.get();
       final Team team = array[pos];
       // TODO DRY - eliminate this code duplication DONE
-      print(team, pos);
+        print(team, pos);
     } else {
       System.out.println("Not Found!");
 
@@ -69,11 +69,11 @@ public class Main {
   static void checkTeamListIndex(final List<Team> list, final Optional<Integer> index) {
     // Checks the index
     if (index.isPresent()) {
-      System.out.println("Found!");
+      //System.out.println("Found!!");
       final int pos = index.get();
       final Team team = list.get(pos);
       // TODO DRY - eliminate this code duplication DONE
-     // print(team, pos);
+     print(team, pos);
     } else {
       System.out.println("Not Found!");
     }

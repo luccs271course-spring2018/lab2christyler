@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TestSearch {
 
@@ -68,25 +69,25 @@ public class TestSearch {
     }
 
 
-    // TODO: testFindMinFundingArray for several sizes and scenarios
+    // TODO: testFindMinFundingArray for several sizes and scenarios DONE
 
     @Test
     public void testFindMinFundingArray0() {
         final Team[] arr = makeArrayFixture(0);
-        assertFalse(Search.findTeamMinFunding(arr, 500).isPresent());
+        assertEquals(Search.findTeamMinFunding(arr, 1000), Optional.empty());
 
     }
 
     @Test
     public void testFindMinFundingArray10s() {
         final Team[] arr = makeArrayFixture(10);
-        assertTrue(Search.findTeamMinFunding(arr, 500).isPresent());
+        assertEquals(Search.findTeamMinFunding(arr, 800),Optional.of(8));
     }
 
     @Test
     public void testFindMinFundingArray10f() {
         final Team[] arr = makeArrayFixture(10);
-        assertFalse(Search.findTeamMinFunding(arr, 1200).isPresent());
+        assertEquals(Search.findTeamMinFunding(arr, 1200), Optional.empty());
 
     }
 
@@ -96,20 +97,20 @@ public class TestSearch {
     @Test
     public void testFindMinFundingArrayFast0() {
         final Team[] arr = makeArrayFixture(0);
-        assertFalse(Search.findTeamMinFunding(arr, 500).isPresent());
+        assertEquals(Search.findTeamMinFundingFast(arr, 1800), Optional.empty());
 
     }
 
     @Test
     public void testFindMinFundingArrayFast10s() {
         final Team[] arr = makeArrayFixture(10);
-            assertTrue(Search.findTeamMinFundingFast(arr, 500).isPresent());
+        assertEquals(Search.findTeamMinFundingFast(arr, 500), Optional.of(5));
     }
 
     @Test
     public void testFindMinFundingArrayFast10f() {
         final Team[] arr = makeArrayFixture(10);
-        assertFalse(Search.findTeamMinFundingFast(arr, 1200).isPresent());
+        assertEquals(Search.findTeamMinFundingFast(arr, 2000), Optional.empty());
 
     }
 }
