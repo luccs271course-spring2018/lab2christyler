@@ -1,4 +1,6 @@
 # What is the complexity of each of the four search methods in terms of array or list size n?
+
+All methods revolve around O(n)
 findTeamPosition - both are done linear so the tasks are always multiplied by n constantly.
 findTeamMinFunding - same concept as findTeamPosition, but is comparing integers instead
 findTeamMinFundingFast - binary search uses log, so with log base 2 of n, it runs through that until it finds a solution

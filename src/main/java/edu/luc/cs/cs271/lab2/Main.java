@@ -73,7 +73,7 @@ public class Main {
       final int pos = index.get();
       final Team team = list.get(pos);
       // TODO DRY - eliminate this code duplication DONE
-     print(team, pos);
+     //print(team, pos);
     } else {
       System.out.println("Not Found!");
     }
