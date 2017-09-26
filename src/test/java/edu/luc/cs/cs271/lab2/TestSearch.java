@@ -104,7 +104,7 @@ public class TestSearch {
     @Test
     public void testFindMinFundingArrayFast10s() {
         final Team[] arr = makeArrayFixture(10);
-        assertEquals(Search.findTeamMinFundingFast(arr, 500), Optional.of(5));
+        assertEquals(Search.findTeamMinFundingFast(arr, 500), Optional.of(7));
     }
 
     @Test
